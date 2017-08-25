@@ -1,3 +1,13 @@
+Nose plugin to output the test results as a HTML file (default name: results.html),
+including per-test profiling. Optionally also supports the generation of call graph
+visualizations.
+
+The code is adapted from the nose plugin nose-html-output
+(https://github.com/openstack-infra/nose-html-output).
+
+--
+Original README for nose-html-output:
+
 A plugin for nosetests that will write out test results to results.html. The
 code is adapted from the example html output plugin at
 https://github.com/nose-devs/nose/blob/master/examples/html_plugin/htmlplug.py

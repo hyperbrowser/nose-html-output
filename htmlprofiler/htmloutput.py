@@ -1,4 +1,23 @@
 """
+Original Copyright notice for "html-output", added by Sveinung Gundersen
+(to be on the safe side):
+
+------------------------------------------------------------------------
+Copyright 2012-2015 Hewlett-Packard Development Company, L.P.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+------------------------------------------------------------------------
 A plugin for nosetests that will write out test results to results.html. The
 code is adapted from the example html output plugin at
 https://github.com/nose-devs/nose/blob/master/examples/html_plugin/htmlplug.py
@@ -264,11 +283,11 @@ a.popup_link:hover {
     top: 0px;
     /*border: solid #627173 1px; */
     padding: 10px;
-    background-color: #E6E6D6;
+    background-color: #F2F2F2;
     font-family: "Lucida Console", "Courier New", Courier, monospace;
     text-align: left;
     font-size: 8pt;
-    width: 90%;
+    /*width: 90%;*/
 }
 
 }
@@ -293,11 +312,11 @@ a.popup_link:hover {
 }
 #total_row  { font-weight: bold; }
 .passClass  { background-color: #6c6; }
-.failClass  { background-color: #c60; }
-.errorClass { background-color: #c00; }
+.failClass  { background-color: #D88E5A; }
+.errorClass { background-color: #D8655A; }
 .passCase   { color: #6c6; }
-.failCase   { color: #c60; font-weight: bold; }
-.errorCase  { color: #c00; font-weight: bold; }
+.failCase   { color: #D88E5A; font-weight: bold; }
+.errorCase  { color: #D8655A; font-weight: bold; }
 .hiddenRow  { display: none; }
 .testcase   { margin-left: 2em; }
 
@@ -393,7 +412,7 @@ a.popup_link:hover {
         %(status)s</a>
 
     <div id='div_%(tid)s' class="popup_window">
-        <div style='text-align: right; color:red;cursor:pointer'>
+        <div style='text-align: right; color:black;cursor:pointer'>
         <a onfocus='this.blur();' onclick="document.getElementById('div_%(tid)s').style.display = 'none' " >
            [x]</a>
         </div>
@@ -471,7 +490,7 @@ class HtmlOutput(Plugin):
         self.result.append((0, test, output, ''))
 
     def addError(self, test, err):
-        output = test.shortDescription()
+        output = ''#test.shortDescription()
         if output is None:
             output = test.id()
         # Skipped tests are handled by SkipTest Exceptions.
@@ -502,7 +521,7 @@ class HtmlOutput(Plugin):
     def report(self, stream):
         self.stopTime = datetime.datetime.now()
         report_attrs = self._getReportAttributes()
-        generator = 'html-output-plugin %s' % __version__
+        generator = 'html-profiler-plugin %s' % __version__
         heading = self._generate_heading(report_attrs)
         report = self._generate_report()
         ending = self._generate_ending()
@@ -660,7 +679,8 @@ class HtmlOutput(Plugin):
 
         script = TemplateData.REPORT_TEST_OUTPUT_TMPL % dict(
             id = tid,
-            output = saxutils.escape(uo+ue),
+            # output = saxutils.escape(uo+ue),
+            output = uo + saxutils.escape(ue),
         )
 
         row = tmpl % dict(
