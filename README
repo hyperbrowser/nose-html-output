@@ -2,8 +2,13 @@ Nose plugin to output the test results as a HTML file (default name: results.htm
 including per-test profiling. Optionally also supports the generation of call graph
 visualizations.
 
-The code is adapted from the nose plugin nose-html-output
-(https://github.com/openstack-infra/nose-html-output).
+An example HTML output is available from the following GitHub Pages page:
+
+    https://hyperbrowser.github.io/nose-html-profiler
+
+The code is adapted from the nose plugin nose-html-output:
+
+    https://github.com/openstack-infra/nose-html-output
 
 --
 Original README for nose-html-output:
