@@ -190,11 +190,12 @@ supports the generation of call graph visualizations."""
         return self._link_to_report_html(test, type, self.PROFILE_LINK[type], report)
 
     def _link_to_report_html(self, test, label, title, report):
-        report = cgi.escape(report)
         return self.LINK_TEMPLATE.format(test.id() + '.' + label, title, report)
 
     def _get_profile_report(self, test, type):
-        return capture(self._print_profile_report, test, type)
+        report = capture(self._print_profile_report, test, type)
+        report = cgi.escape(report)
+        return report
 
     def _print_profile_report(self, test, type):
         stats = pstats.Stats(self._get_test_profile_filename(test))
