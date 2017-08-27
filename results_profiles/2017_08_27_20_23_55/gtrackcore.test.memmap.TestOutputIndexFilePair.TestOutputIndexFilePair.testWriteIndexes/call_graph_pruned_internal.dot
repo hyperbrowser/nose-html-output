@@ -1,0 +1,12 @@
+digraph {
+	graph [fontname=vera, nodesep=0.125, ranksep=0.25];
+	node [fontcolor=white, fontname=vera, height=0, shape=box, style=filled, width=0];
+	edge [fontname=vera];
+	21 [color="#ff0000", fontcolor="#ffffff", fontsize="10.00", label="TestOutputIndexFilePair:48:_assertWriteIndexes\n2.51%\n(1.16%)\n1×", tooltip="/Users/sveinugu/PycharmProjects/gtrackcore/gtrackcore/test/memmap/TestOutputIndexFilePair.py"];
+	21 -> 46 [arrowsize="0.35", color="#0d1174", fontcolor="#0d1174", fontsize="10.00", label="0.97%\n1×", labeldistance="0.50", penwidth="0.50"];
+	29 [color="#0c8190", fontcolor="#ffffff", fontsize="10.00", label="TestOutputIndexFilePair:62:testWriteIndexes\n2.77%\n(0.26%)\n1×", tooltip="/Users/sveinugu/PycharmProjects/gtrackcore/gtrackcore/test/memmap/TestOutputIndexFilePair.py"];
+	29 -> 21 [arrowsize="0.35", color="#0d1776", fontcolor="#0d1776", fontsize="10.00", label="2.51%\n1×", labeldistance="0.50", penwidth="0.50"];
+	46 [color="#0c8190", fontcolor="#ffffff", fontsize="10.00", label="TestOutputIndexFilePair:16:__init__\n0.97%\n(0.26%)\n1×", tooltip="/Users/sveinugu/PycharmProjects/gtrackcore/gtrackcore/test/memmap/TestOutputIndexFilePair.py"];
+	46 -> 58 [arrowsize="0.35", color="#0d1074", fontcolor="#0d1074", fontsize="10.00", label="0.71%\n1×", labeldistance="0.50", penwidth="0.50"];
+	58 [color="#5cc508", fontcolor="#ffffff", fontsize="10.00", label="~:0:<numpy.core.multiarray.array>\n0.71%\n(0.71%)\n1×", tooltip="~"];
+}
