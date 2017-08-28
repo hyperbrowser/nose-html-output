@@ -1,5 +1,8 @@
-Nose plugin to output the test results as a HTML file (default name: results.html),
-including per-test profiling. Optionally also supports the generation of call graph
+HtmlProfiler
+------------
+
+Nose plugin to output the test results as a HTML file, including per-test
+profiling. Optionally also supports the generation of call graph
 visualizations.
 
 An example HTML output is available from the following GitHub Pages page:
@@ -9,6 +12,25 @@ An example HTML output is available from the following GitHub Pages page:
 The code is adapted from the nose plugin nose-html-output:
 
     https://github.com/openstack-infra/nose-html-output
+
+When installed, the following options are added to the 'nosetests' command:
+
+  --with-html-profiler  Enable plugin HtmlProfiler: Outputs the test results
+                        as a HTML file, including per-test profiling.
+                        Optionally also supports the generation of call graph
+                        visualizations. [NOSE_WITH_HTML_PROFILER]
+  --html-out-file=FILE  Produce results in the specified HTML file. Default
+                        value: profile_dir. Can also be specified in the
+                        environment variable NOSE_HTML_OUT_FILE.
+  --html-call-graph     Adds call graphs based on the profiling to the HTML
+                        file for each test.
+  --html-profile-dir=FILE
+                        Use the specified directory to store the directory
+                        containing call graph and statistic files for each
+                        individual test. The result HTML file links to the
+                        call graph files thus created.Default value:
+                        profile_dir. Can also be specified in the environment
+                        variable NOSE_HTML_PROFILE_DIR.
 
 --
 Original README for nose-html-output:

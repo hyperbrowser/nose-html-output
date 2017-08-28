@@ -460,7 +460,9 @@ class HtmlOutput(Plugin):
             default=env.get('NOSE_HTML_OUT_FILE', 'results.html'),
             dest="html_file",
             metavar="FILE",
-            help="Produce results in the specified HTML file.")
+            help="Produce results in the specified HTML file. "
+                 "Default value: profile_dir. Can also be specified in the "
+                 "environment variable NOSE_HTML_OUT_FILE.")
 
     def configure(self, options, conf):
         super(HtmlOutput, self).configure(options, conf)

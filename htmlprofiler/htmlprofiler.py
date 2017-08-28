@@ -112,7 +112,9 @@ supports the generation of call graph visualizations."""
                           metavar="FILE",
                           help="Use the specified directory to store the directory containing "
                                "call graph and statistic files for each individual test. The "
-                               "result HTML file links to the call graph files thus created.")
+                               "result HTML file links to the call graph files thus created."
+                               "Default value: profile_dir. Can also be specified in the "
+                               "environment variable NOSE_HTML_PROFILE_DIR.")
 
     @classmethod
     def available(cls):
