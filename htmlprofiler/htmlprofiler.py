@@ -21,6 +21,8 @@ This module extends "htmloutput.py" to add profiling and call-
 graph reporting to the HTML report, for each test.
 """
 
+from __future__ import absolute_import, print_function, unicode_literals
+
 import cProfile
 import cgi
 
@@ -34,8 +36,12 @@ try:
 except ImportError:
     pygraphviz = None
 
-from htmloutput import HtmlOutput
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
+from .htmloutput import HtmlOutput
 from xml.sax import saxutils
 
 
@@ -203,10 +209,10 @@ supports the generation of call graph visualizations."""
         stats = pstats.Stats(self._get_test_profile_filename(test))
 
         if stats:
-            print self.PROFILE_HEADER[type]
+            print(self.PROFILE_HEADER[type])
             stats.sort_stats(type)
             stats.print_stats()
-            print self.PROFILE_FOOTER
+            print(self.PROFILE_FOOTER)
 
     def _get_callgraph_report_html(self, test, prune):
         report = self._get_callgraph_report(test, prune)
@@ -218,7 +224,6 @@ supports the generation of call graph visualizations."""
         self._render_graph(test, prune)
         rel_graph_filename = os.path.relpath(self._get_test_graph_filename(test, prune),
                                              os.path.dirname(self.html_file))
-        print>>open('out', 'w'), self._get_test_graph_filename(test, prune), os.path.dirname(self.html_file), rel_graph_filename
         return self.IMG_TEMPLATE.format(rel_graph_filename)
 
     def _write_dot_graph(self, test, prune=False):
